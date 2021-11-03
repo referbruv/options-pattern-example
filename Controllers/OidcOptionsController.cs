@@ -43,5 +43,17 @@ namespace ReaderOptionsApp.Controllers
                 { OidcProviders.Okta, okta }
             };
         }
+
+        [HttpGet, Route("oidc/{providerName}")]
+        public OidcOptions GetOidcOptionsByKey(string providerName)
+        {
+            switch(providerName)
+            {
+                case OidcProviders.Google: return google;
+                case OidcProviders.Facebook: return facebook;
+                case OidcProviders.Okta: return okta;
+                default: return null;
+            }
+        }
     }
 }
